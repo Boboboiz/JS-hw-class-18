@@ -34,10 +34,11 @@ function handleFindMin() {
   var numToFind = document.getElementById("number").value;
   var min = arr[0];
 
-  for (var i = 1; i <= arr.length; i++) {
+  for (var i = 0; i < arr.length - 1; i++) {
     if (arr[i] < arr[0]) {
       min = arr[i];
-    }
+      
+    } 
   }
   document.getElementById("findMin").innerHTML = "Số nhỏ nhất là :" + min;
 }
@@ -59,9 +60,9 @@ function handleFindEven() {
   var index = arr.length;
   var result = "";
   for (i = index - 1; i >= 0; i--) {
-    if (arr[i] % 2 == 0 && arr[i] > 0) {
+    if (arr[i] % 2 == 0 || arr[i] === 0) {
       result = arr[i];
-      break;
+      break
     } else {
       return alert("-1");
     }
@@ -71,8 +72,8 @@ function handleFindEven() {
 }
 
 function swapIndex(array, index1, index2) {
-  var temp = array[index2];
-  array[index1] = array[index2];
+  var temp = array[index1];
+  array[index1] = array[index2]
   array[index2] = temp;
 
   return array
@@ -89,13 +90,16 @@ function doSwap() {
 
 function rangeLinear (){
   for (i= 0 ; i < arr.length -1 ; i++){
+    var index = i
     for ( j = i + 1 ; j < arr.length; j++){
-      if ( arr[j] > arr[i]){
-        var temp = arr[i]
-        arr[i] = arr[j]
-        arr[j] = temp
-      }
+      if ( arr[index] > arr[j]){
+        index = j
+
+      } 
     }
+    var temp = arr[i]
+    arr[i] = arr[index]
+    arr[index] = temp
   }
   console.log(arr)
   document.getElementById("range").innerHTML = arr;
